@@ -1,3 +1,9 @@
+
+
+
+// controller funtion for '/' route
 module.exports.home = function(req, res){
-    return res.end('express in up');
+    return res.render('home', {
+        title: "TODO-APP"
+    });
 }
