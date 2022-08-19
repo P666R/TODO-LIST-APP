@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 // assign port constant with port 8000
 const port = 8000;
+// create a route to redirect on every request to routes directory
+app.use('/', require('./routes'));
 
 
 // set up the application to listen at port 8000
