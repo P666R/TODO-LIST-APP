@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>TODO-APP</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/home.css">
 </head>
+
 <body>
-    <h1>express server up</h1>
+
+    <!-- Main Container where all the data is shown -->
+    <section id="main-container">
+        <!-- App Title -->
+        <h1 class="text-color"  id="app-title">TODO APP</h1>
+
+        <!-- Separator -->
+        <div class="horizontal-line"></div>
+
+        <!-- Form to add new Task -->
+        <form action="/action/create-task" method="POST">
+            <!-- Div for description input -->
+            <div id="desc-div">
+                <label for="desc-input"> description </label>
+                <input type="text" name="description" id="desc-input" placeholder="Add task..." required>
+            </div>
+            
+            <!-- Separator -->
+            <div class="horizontal-line"></div>
+
+            <!-- Div for data inputs (i.e: category and Date) -->
+            <div id="data-div">
+                <!-- div for category selection option -->
+                <div id="category-div">
+                    <label for="category"> Category </label>
+
+                    <select name="category" id="category">
+                        <option value="n/a"> Choose a category </option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="education">Education</option>
+                        <option value="hobby">Hobby</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Separator -->
+                <div class="vertical-line"></div>
+
+                <!-- Div for date input -->
+                <div id="date-div">
+                    <div>
+                        <label for="date"> Due Date </label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Separator -->
+            <div class="horizontal-line"></div>
+
+            <!-- Contains Action Buttons (i.e: Add and Delete ) -->
+            <div id="action-buttons">
+
+                <!-- button to add a new task and sumbit form -->
+                <button id="add-button" type="submit"> 
+                    <i class="fas fa-plus"></i>
+                    <span>Add Task</span> 
+                </button>
+
+                <!-- button to delete all the selected tasks -->
+                <button id="delete-button" type="submit" form="tasks-list-form">
+                    <i class="fas fa-trash-alt"></i>
+                    <span>Delete Tasks</span>
+                </button>
+            </div>
+
+        </form>
+
+        <!-- This div will show list of all the tasks stored in the Database -->
+        <form action="/action/delete-tasks" method="POST" id="tasks-list-form">
+            <% for(let i of task_list){%>
+                <div>
+                    <div class="horizontal-line"></div>
+                    <div class="task">
+                        <input id="check" type="checkbox" name="id" value="<%= i.id %>" >
+                        <div class="task-data">
+                            <p> <%= i.description %> </p>
+                            <i class="fas fa-calendar-alt"></i>
+                            <span> <%= i.date %> </span>
+                        </div>
+                        <button type="button" style="background-color: <%= color_list[i.category] %>;"> <%= i.category %> </button>
+                    </div>
+                </div>
+            <%}%>
+
+            </form>
+    </section>
+
+
+    <script type="text/javascript" src="/js/home.js"></script>
+    
 </body>
+
 </html>

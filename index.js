@@ -18,11 +18,12 @@ app.set('view engine', 'ejs');
 // set path for views
 app.set('views', './views');
 
-
+//set path for using static assets
+app.use(express.static('assets'));
 
 // set up the application to listen at port 8000
-app.listen(port, function(err){
-    if(err){
+app.listen(port, function (err) {
+    if (err) {
         console.log(`error in running the server: ${err}`);
     }
 

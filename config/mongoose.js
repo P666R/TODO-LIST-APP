@@ -1,6 +1,7 @@
+// import mongoose
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1/todo_db');
+mongoose.connect('mongodb://127.0.0.1/task_list_db');
 
 const db = mongoose.connection;
 

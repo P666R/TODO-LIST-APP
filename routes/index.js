@@ -12,5 +12,8 @@ console.log('Router loaded');
 // assigned controller function to a route
 router.get('/', homecontroller.home);
 
+// route all requests starting with '/action' to action.js 
+router.use('/action', require('./action'));
+
 // exported router
 module.exports = router;
