@@ -42,8 +42,8 @@ module.exports.create = function(req, res){
     });
 }
 
-// this function will be called when delete-task button is clicked.
-// It can delete a task or a list of tasks from database.
+// this function will be called when delete-task button is clicked
+// It can delete a task or a list of tasks from database
 module.exports.delete = function(req, res){
     // If user haven't selected any task to delete
     if(req.body.id == undefined){
